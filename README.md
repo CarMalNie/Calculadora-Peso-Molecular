@@ -86,15 +86,3 @@ El objetivo es migrar el almacenamiento de los resultados (actualmente en `compu
 
 El programa se inicia con un menú de 4 opciones. La **Opción 4 (Guardar y Salir)** asegura la persistencia de tus cálculos.
 ````
-
-**Pasos a seguir:**
-
-1.  **Guarda** el texto de arriba en tu archivo `README.md`.
-
-2.  Ejecuta los siguientes comandos en Git Bash para finalizar la fusión y subir el trabajo:
-
-    ```bash
-    git add README.md
-    git commit -m "Solucionado conflicto de fusión en README.md; se mantiene la documentación de la Fase 2."
-    git push origin main
-    ```
