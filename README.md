@@ -1,9 +1,6 @@
 
 -----
 
-## `README.md` (Resuelto y Final)
-
-```markdown
 # Calculadora de Peso Molecular (Evolución: Fase 1 a Fase 2)
 
 Este **trabajo personal** documenta el desarrollo evolutivo de una calculadora de peso molecular. El proyecto migró de un diseño funcional simple (Fase 1) a una **arquitectura de Programación Orientada a Objetos (POO)** y **análisis algorítmico (Stack)** para manejar fórmulas complejas.
