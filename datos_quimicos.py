@@ -35,7 +35,7 @@ def cargar_datos_mendeleev():
             # 2. Almacenar el peso atómico para cálculos
             PESOS_ATOMICOS[simbolo] = peso
             
-        print(f"Datos Químicos: Cargados {len(VALIDADOR_SIMBOLOS)} elementos y sus pesos.")
+        print(f"Datos Químicos: Cargados {len(VALIDADOR_SIMBOLOS)} elementos y sus pesos atómicos.")
         
     except Exception as e:
         # Manejo de error si la librería falla o no puede obtener datos

@@ -3,12 +3,13 @@ from funciones import (
     obtener_compuestos_cargados,
     _pedir_formula_y_crear_compuesto,
     _opcion_mostrar_compuestos,
+    _opcion_eliminar_compuesto,
     guardar_compuestos
 )
 from typing import Dict
 from compuesto_quimico import CompuestoQuimico
 
-# --- FUNCIÓN DE INTERFAZ ---
+
 def mostrar_menu_principal(compuestos: Dict[str, CompuestoQuimico]):
     """ Muestra el menú en la terminal. """
     print("\n" + "="*45)
@@ -21,10 +22,11 @@ def mostrar_menu_principal(compuestos: Dict[str, CompuestoQuimico]):
         print("Compuestos Cargados: 0 - Usa la Opción 1 para calcular y agregar un nuevo compuesto.")
         
     print("---------------------------------------------")
-    print("1. Calcular PM del Compuesto") 
-    print("2. Mostrar Compuestos Guardados")
-    print("3. Guardar")            
-    print("4. Guardar y Salir")    
+    print("1. Calcular Peso Molecular del Compuesto Químico") 
+    print("2. Mostrar Compuestos Químicos Guardados")
+    print("3. Eliminar Compuesto Químicos Guardado")
+    print("4. Guardar")            
+    print("5. Guardar y Salir")
     print("="*45)
 
 
@@ -39,7 +41,7 @@ def main():
         compuestos_actuales = obtener_compuestos_cargados()
         mostrar_menu_principal(compuestos_actuales) 
         
-        opcion = input("Selecciona una opción (1-4): ").strip()
+        opcion = input("Selecciona una opción (1-5): ").strip()
         
         # Lógica 'match/case' directa en main
         match opcion:
@@ -48,15 +50,20 @@ def main():
             case '2':
                 _opcion_mostrar_compuestos()
             case '3':
-                guardar_compuestos()
+                _opcion_eliminar_compuesto()
             case '4':
+                # Opción Guardar
+                guardar_compuestos()
+            case '5':
+                # Opción Guardar y Salir
                 guardar_compuestos() 
                 print("\n¡Gracias por usar la calculadora!")
                 break # Salir del bucle
             case _:
-                print("Opción inválida. Por favor, selecciona un número entre 1 y 4.")
+                print("Opción inválida. Por favor, selecciona un número entre 1 y 5.")
         
-        if opcion in ['1', '2', '3']:
+        # Pausa para que el usuario pueda leer los resultados
+        if opcion in ['1', '2', '3', '4']:
             input("\nPresiona Enter para volver al Menú Principal...")
 
 if __name__ == "__main__":

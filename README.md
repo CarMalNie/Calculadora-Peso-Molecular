@@ -9,11 +9,11 @@ La versión actual representa la **Fase 2** (el commit "Calculadora de Moles Eta
 
 -----
 
-## ⚙️ Fase 2: Análisis Avanzado y POO (Versión Actual)
+## Fase 2: Análisis Avanzado y POO (Versión Actual)
 
 La Fase 2 es una reescritura completa del proyecto, enfocada en resolver la limitación de la Fase 1 (no manejar paréntesis) e implementar principios de diseño avanzado.
 
-### 🚀 Innovaciones y Valor Agregado
+### Innovaciones y Valor Agregado
 
 | Característica | Mejora sobre Fase 1 | Valor para el Portafolio |
 | :--- | :--- | :--- |
@@ -22,13 +22,13 @@ La Fase 2 es una reescritura completa del proyecto, enfocada en resolver la limi
 | **Persistencia** | Variables globales volátiles. | **Persistencia Robusta:** Guarda y carga **objetos POO** de forma segura en `compuestos.txt`. |
 | **Encapsulación** | Sin control de acceso. | **Getters:** Acceso controlado y validado a atributos privados, demostrando el uso de **getters**. |
 
-### ⚠️ Restricción Crucial: Entrada Estricta IUPAC
+### Restricción Crucial: Entrada Estricta IUPAC
 
 Para garantizar resultados precisos y evitar la ambigüedad irresoluble de $\text{CO}_2$ vs. $\text{Co}_2$ (un problema que la Fase 1 no podía resolver), el programa requiere que el usuario ingrese la fórmula respetando estrictamente la **capitalización de la IUPAC**.
 
 -----
 
-## 💻 Fundamentos del Lenguaje Python (Demostrados en Fase 2)
+## Fundamentos del Lenguaje Python (Demostrados en Fase 2)
 
 El proyecto excede los requisitos mínimos, aplicando el diseño POO y el algoritmo Stack para demostrar dominio sobre:
 
@@ -38,7 +38,7 @@ El proyecto excede los requisitos mínimos, aplicando el diseño POO y el algori
 
 -----
 
-## 📚 Historial del Proyecto (Fase 1: La Base Funcional)
+## Historial del Proyecto (Fase 1: La Base Funcional)
 
 La Fase 1 fue la versión inicial del proyecto, sentando las bases de la modularidad y la lógica de cálculo simple. Esta fase fue completamente reemplazada por la arquitectura POO de la Fase 2.
 
@@ -50,7 +50,7 @@ La Fase 1 fue la versión inicial del proyecto, sentando las bases de la modular
 
 -----
 
-## ⚙️ Visión a Futuro: Fase 3 - Modelado Relacional
+## Visión a Futuro: Fase 3 - Modelado Relacional
 
 Una vez completada la lógica de cálculo en Python, la **Fase 3** se enfoca en la **Persistencia Avanzada y el Modelado de Datos** utilizando **MySQL Workbench**.
 

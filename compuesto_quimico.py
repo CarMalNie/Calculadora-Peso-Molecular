@@ -3,51 +3,89 @@ from datos_quimicos import obtener_peso_atomico, es_simbolo_valido
 
 class CompuestoQuimico:
     """
-    Representa un compuesto químico. Encapsula su fórmula y PM.
-    Utiliza el método Stack para analizar fórmulas con agrupadores (paréntesis/corchetes).
+    Representa un compuesto químico. Usa @property para una gestión de atributos controlada.
     """
 
     def __init__(self, formula_str: str):
-        """
-        Constructor. Inicializa el objeto y realiza el análisis y cálculo del PM.
-        """
-        # --- 1. Atributos Privados (Encapsulación) ---
-        self._formula_original = formula_str.strip()
+        # Inicializamos atributos privados.
+        self._formula = "" 
         self._elementos_conteo = {} 
         self._peso_molecular = 0.0
         self._es_valido = False 
         self._mensaje_error = ""
         
-        # --- 2. Ejecutar Lógica Central ---
+        # Llama al setter, disparando la validación y el cálculo central.
+        self.formula = formula_str 
+
+    
+    ## MÉTODO DE REPRESENTACIÓN __str__ ##
+    
+    def __str__(self):
+        """
+        Devuelve una representación legible para humanos del compuesto, con PM a 3 decimales.
+        Formato: Compuesto: H2O | Peso Molecular: 18.015 g/mol | Elementos: Hx2, Ox1
+        """
+        if not self.es_valido:
+            return f"Compuesto: {self.formula} | Error: {self.mensaje_error}"
+            
+        # Construye la parte de elementos: Hx2, Ox1, etc.
+        elementos_list = [f"{simbolo}x{cantidad}" for simbolo, cantidad in self.elementos_conteo.items()]
+        elementos_str = ", ".join(elementos_list)
+        
+        return "Compuesto: {} | Peso Molecular: {:.3f} g/mol | Elementos: {}".format(
+            self.formula,
+            self.peso_molecular,
+            elementos_str
+        )
+    
+    
+    ## GETTER/SETTER @PROPERTY PARA LA FÓRMULA (VALIDACIÓN CENTRAL) ##
+        
+    @property
+    def formula(self) -> str:
+        """ Getter: Permite acceder a la fórmula (ej: mi_compuesto.formula)."""
+        return self._formula
+
+    @formula.setter
+    def formula(self, nueva_formula_str: str):
+        """ Setter: Asigna la fórmula, limpia el estado y dispara la validación/cálculo."""
+        formula_limpia = nueva_formula_str.strip()
+        
+        self._establecer_error("") 
+        
+        if not formula_limpia:
+            self._establecer_error("La fórmula no puede estar vacía.")
+            return
+
+        self._formula = formula_limpia
+        
         self._analizar_y_calcular()
-
+        
     
-    ## GETTERS (Acceso Controlado) ##
-    
+    ## PROPIEDADES (GETTERS) RESTANTES ##
 
-    def get_formula(self) -> str:
-        """ Getter para obtener la fórmula original ingresada. """
-        return self._formula_original
-
-    def get_peso_molecular(self) -> float:
-        """ Getter para obtener el peso molecular calculado. """
+    @property
+    def peso_molecular(self) -> float:
+        """ Getter: Obtiene el PM. Acceso vía mi_compuesto.peso_molecular """
         return self._peso_molecular
 
+    @property
     def es_valido(self) -> bool:
-        """ Getter para verificar si el análisis de la fórmula fue exitoso. """
+        """ Getter: Verifica el estado de validez. Acceso vía mi_compuesto.es_valido """
         return self._es_valido
 
-    def get_mensaje_error(self) -> str:
-        """ Getter para obtener el mensaje de error si la fórmula es inválida. """
+    @property
+    def mensaje_error(self) -> str:
+        """ Getter: Obtiene el mensaje de error. Acceso vía mi_compuesto.mensaje_error """
         return self._mensaje_error
         
-    def get_elementos_conteo(self) -> dict:
-        """ Getter para obtener el diccionario de conteo de elementos. """
+    @property
+    def elementos_conteo(self) -> dict:
+        """ Getter: Obtiene el conteo de elementos. Acceso vía mi_compuesto.elementos_conteo """
         return self._elementos_conteo
         
-
+    
     ## LÓGICA INTERNA DE CÁLCULO (STACK) ##
-
 
     def _establecer_error(self, mensaje: str):
         """ Método auxiliar para establecer el estado de error de forma consistente. """
@@ -60,7 +98,6 @@ class CompuestoQuimico:
     def _analizar_formula_compleja(self, formula_original: str):
         """
         Implementación ROBUSTA con STACK para contar elementos y manejar agrupadores ((), []). 
-        Requiere capitalización estricta (IUPAC).
         """
         conteo = {}
         # Pila de factores de grupo (siempre empieza en 1)
@@ -82,21 +119,18 @@ class CompuestoQuimico:
             
             # Caso 2: Paréntesis/Corchete de CIERRE (en la fórmula original: ), ])
             elif token in [')', ']']:
-                # El subíndice pertenece al grupo. Acumulamos el nuevo factor.
                 factor_actual *= ultimo_subindice
                 multiplicadores_stack.append(factor_actual)
                 ultimo_subindice = 1 
             
             # Caso 3: Paréntesis/Corchete de APERTURA (en la fórmula original: (, [)
             elif token in ['(', '[']:
-                # Salimos del grupo. Deshacemos la multiplicación del grupo.
                 if len(multiplicadores_stack) > 1:
                     multiplicadores_stack.pop()
                     factor_actual = multiplicadores_stack[-1]
                     ultimo_subindice = 1
                 else:
-
-                    raise ValueError(f"Agrupador de apertura ('{token}') encontrado sin su cierre correspondiente o sin subíndice inicial.")
+                    raise ValueError(f"Agrupador de apertura ('{token}') encontrado sin su cierre correspondiente. Verifique que no falte un subíndice o un agrupador de cierre.")
 
             # Caso 4: Símbolo Químico (Elemento)
             elif token.isalpha():
@@ -106,36 +140,30 @@ class CompuestoQuimico:
                 if len(simbolo) == 2 and simbolo.isupper():
                     simbolo_capitalizado = simbolo.capitalize()
                     if es_simbolo_valido(simbolo_capitalizado):
-                        # Mensaje modificado
-                        raise ValueError(f"Símbolo ambiguo: '{simbolo}' (dos mayúsculas). La notación IUPAC correcta es '{simbolo_capitalizado}'.")
+                        raise ValueError(f"Símbolo ambiguo: '{simbolo}' (dos mayúsculas). La notación IUPAC correcta es '{simbolo_capitalizado}' (Ej: Cobre).")
                 
                 if not es_simbolo_valido(simbolo):
-                    
-                    raise ValueError(f"Símbolo no reconocido: '{simbolo}'. Verifique que sea un elemento químico válido.")
+                    raise ValueError(f"Símbolo no reconocido: '{simbolo}'. Debe ser un elemento químico válido (IUPAC).")
 
                 # Calcular la cantidad total: Subíndice propio * Factor del Grupo
                 cantidad_total = ultimo_subindice * factor_actual
 
                 conteo[simbolo] = conteo.get(simbolo, 0) + cantidad_total
                 
-                ultimo_subindice = 1 # Reiniciar para el siguiente elemento/grupo
+                ultimo_subindice = 1 
 
             else:
-                
-                raise ValueError(f"Carácter o token inválido encontrado: '{token}'. Revise la sintaxis.")
+                raise ValueError(f"Sintaxis inválida: Carácter o token no reconocido: '{token}'.")
 
         # Comprobación de errores finales
         if len(multiplicadores_stack) > 1:
-            
             raise ValueError("Fórmula incompleta: Falta cerrar uno o más agrupadores (paréntesis/corchetes).")
             
         if not conteo:
-            
             raise ValueError("Fórmula vacía o la sintaxis es completamente inválida.")
 
         return conteo
         
-
     def _calcular_peso(self):
         """ Calcula el peso molecular total a partir del conteo de elementos. """
         peso_total = 0.0
@@ -155,9 +183,9 @@ class CompuestoQuimico:
         Método central que orquesta el análisis y el cálculo.
         """
         try:
-            formula_original = self._formula_original
+            formula_a_analizar = self._formula 
             
-            self._elementos_conteo = self._analizar_formula_compleja(formula_original)
+            self._elementos_conteo = self._analizar_formula_compleja(formula_a_analizar)
             
             self._calcular_peso()
             self._es_valido = True 

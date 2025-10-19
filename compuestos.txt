@@ -1,6 +1,10 @@
-{"H2O":{"Formula":"H2O","Peso Molecular":18.015,"Elementos":{"O":1,"H":2}}}
-{"Al(OH)3":{"Formula":"Al(OH)3","Peso Molecular":78.0025385,"Elementos":{"H":3,"O":3,"Al":1}}}
-{"K4[Fe(CN)6]":{"Formula":"K4[Fe(CN)6]","Peso Molecular":368.3462,"Elementos":{"N":6,"C":6,"Fe":1,"K":4}}}
-{"[Co(NH3)6]Cl3":{"Formula":"[Co(NH3)6]Cl3","Peso Molecular":267.469194,"Elementos":{"Cl":3,"H":18,"N":6,"Co":1}}}
-{"NH4OH":{"Formula":"NH4OH","Peso Molecular":35.046,"Elementos":{"H":5,"O":1,"N":1}}}
-{"Ba(OH)2":{"Formula":"Ba(OH)2","Peso Molecular":171.341,"Elementos":{"H":2,"O":2,"Ba":1}}}
+{"1":{"Formula":"H2O","Peso Molecular":18.015,"Elementos":{"O":1,"H":2}}}
+{"2":{"Formula":"Al(OH)3","Peso Molecular":78.0025385,"Elementos":{"H":3,"O":3,"Al":1}}}
+{"3":{"Formula":"K4[Fe(CN)6]","Peso Molecular":368.3462,"Elementos":{"N":6,"C":6,"Fe":1,"K":4}}}
+{"4":{"Formula":"[Co(NH3)6]Cl3","Peso Molecular":267.469194,"Elementos":{"Cl":3,"H":18,"N":6,"Co":1}}}
+{"5":{"Formula":"NH4OH","Peso Molecular":35.046,"Elementos":{"H":5,"O":1,"N":1}}}
+{"6":{"Formula":"Ba(OH)2","Peso Molecular":171.341,"Elementos":{"H":2,"O":2,"Ba":1}}}
+{"7":{"Formula":"C6H12O6","Peso Molecular":180.156,"Elementos":{"O":6,"H":12,"C":6}}}
+{"8":{"Formula":"C7H8","Peso Molecular":92.14099999999999,"Elementos":{"H":8,"C":7}}}
+{"9":{"Formula":"CuFeS2","Peso Molecular":183.511,"Elementos":{"S":2,"Fe":1,"Cu":1}}}
+{"10":{"Formula":"C3H7NO2","Peso Molecular":89.094,"Elementos":{"O":2,"N":1,"H":7,"C":3}}}
