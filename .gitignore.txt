@@ -1,0 +1,63 @@
+# ========================
+# Archivos compilados / optimizados / dll
+# ========================
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Distribuciones
+dist/
+build/
+*.egg
+*.whl
+
+# ========================
+# Entornos y Datos de la Aplicación
+# ========================
+# Entornos virtuales
+venv/
+.venv/
+env/
+.env/
+
+# Archivo de Persistencia del usuario (FASE 2)
+compuestos.txt
+
+# Archivos de Jupyter Notebook
+.ipynb_checkpoints/
+
+# ========================
+# IDE, Logs y Metadatos
+# ========================
+
+# Archivos específicos del editor/IDE
+.idea/             # IDEs de JetBrains (PyCharm, IntelliJ)
+.vscode/           # Configuración de VS Code
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+.dm/
+
+# Logs y bases de datos
+*.log
+*.sqlite3
+*.db.sqlite3
+
+# Volcados de memoria y otras salidas
+*.stackdump
+*.prof
+*.coverage
+
+# ========================
+# Archivos específicos del sistema operativo
+# ========================
+.DS_Store          # macOS
+Thumbs.db          # Windows
+ehthumbs.db        # Windows
+.Spotlight-V100    # macOS
+.Trashes           # macOS
+desktop.ini        # Windows

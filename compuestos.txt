@@ -1,0 +1,6 @@
+{"H2O":{"Formula":"H2O","Peso Molecular":18.015,"Elementos":{"O":1,"H":2}}}
+{"Al(OH)3":{"Formula":"Al(OH)3","Peso Molecular":78.0025385,"Elementos":{"H":3,"O":3,"Al":1}}}
+{"K4[Fe(CN)6]":{"Formula":"K4[Fe(CN)6]","Peso Molecular":368.3462,"Elementos":{"N":6,"C":6,"Fe":1,"K":4}}}
+{"[Co(NH3)6]Cl3":{"Formula":"[Co(NH3)6]Cl3","Peso Molecular":267.469194,"Elementos":{"Cl":3,"H":18,"N":6,"Co":1}}}
+{"NH4OH":{"Formula":"NH4OH","Peso Molecular":35.046,"Elementos":{"H":5,"O":1,"N":1}}}
+{"Ba(OH)2":{"Formula":"Ba(OH)2","Peso Molecular":171.341,"Elementos":{"H":2,"O":2,"Ba":1}}}
